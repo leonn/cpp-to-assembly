@@ -39,8 +39,8 @@
         </p>
         <pre id="error" style="display:none" class="alert alert-error">
         </pre>
-        <form method="post">
-          
+        <form id="compilation-form" method="post">
+
             <h4 style="float:left">Paste your own code or</h4>  <div class="btn-group"  style="float:left">
                 <button class="btn dropdown-toggle" data-toggle="dropdown" id="loadcode" autocomplete="off">Load sample code <span class="caret"></span></button>
                 <ul class="dropdown-menu" id="fileselect">
@@ -50,6 +50,7 @@
                 </ul>
               </div>
             <textarea name="ccode" id="ccode" style="height: 500px; width: 100%; font-family: monospace;"></textarea>
+            Current compilation command: <code id="compilation_string"></code>
             <label class="radio">
             <input type="radio" name="language" id="lang_c" value="c" checked>
             GNU GCC C </label>
@@ -57,7 +58,16 @@
             <input type="radio" name="language" id="lang_cpp" value="cpp">GNU GCC C++ </label>
             <label class="checkbox">
             <input type="checkbox" value="1" name="optimize"/> Optimize (-O2) works only with simple code</label>
-            <input type="checkbox" value="1" name="arm"/> Use ARM</label>
+            <label class="checkbox"><input type="checkbox" value="1" name="arm"/> Use ARM</label>
+            <label class="checkbox"><input type="checkbox" value="1" name="intel_asm"/> Use Intel ASM</label>
+            <label>
+                Compilation standard
+                <select name="standard">
+                    <option value="c99">c99</option>
+                    <option value="c++11">c++11</option>
+                    <option value="c++14">c++14</option>
+                </select>
+            </label>
         </form>
         <button id="compile" class="btn btn-primary btn-large" data-loading-text="Code is compiling..." autocomplete="off">Translate Code to Assembly</button>
     </div>
